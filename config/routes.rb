@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'login/index'
+  get 'login/index'=>'login#index'
   get 'login/test' =>'login#test'
   get 'login/check'=>'login#check'
-  get 'login/create'=>'login#create'
+  post 'login/create'=>'login#create'
   get 'login/welcome'=>'login#welcome'
 
 

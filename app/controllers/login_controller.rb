@@ -1,5 +1,9 @@
 class LoginController < ApplicationController
+
   def index
+   @l=Login.new
+ 
+
   # 	uname=params[:username]
   #   pwd=params[:password]
   #   @l=Login.new
@@ -17,9 +21,22 @@ uname=params[:username]
     @l=Login.new
     @l.username=uname
     @l.password=pwd
-    @l.save
+    @l.password_confirmation=params[:password_confirmation]
+ #@l.valid?
 
-   redirect_to login_test_path
+     
+
+
+    if @l.save
+
+       redirect_to login_test_path
+    else
+      puts "hello------------------------------"
+      @mes=@l.errors.messages
+      puts @mes
+      render 'index'
+    end
+   
    puts uname
  
 
